@@ -32,6 +32,8 @@
       <p>{{ index + 1 }}. {{ item.answer }}</p>
       <p>赞数: {{ item.zan }}</p>
     </div>
+    <div>
+    <router-link to="/save">保存反馈</router-link></div>
   </div>
 
 
