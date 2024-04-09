@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 
 import pa from "../components/pa.vue";
 import save from "../components/save.vue";
+import login from "../components/login.vue";
 Vue.use(Router)
 
 export default new Router({
@@ -26,6 +27,11 @@ export default new Router({
       path: '/pa',
       name: 'pa',
       component: pa
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     }
   ]
 })
