@@ -21,6 +21,7 @@ from Shukongdashi.demo import question_buquan
 from Shukongdashi.demo import question_wenda
 from . import view
 from django.views.generic import TemplateView
+from django.urls import path, include
 
 
 urlpatterns = [
@@ -31,6 +32,7 @@ urlpatterns = [
     url(r'^buquan', question_buquan.question_buquan),
     url(r'^wenda', question_wenda.question_wenda),
     url(r'^$', TemplateView.as_view(template_name="index.html")),
+    path('api/', include('users.urls')),
 ]
 
 # urlpatterns = [

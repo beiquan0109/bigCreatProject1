@@ -30,12 +30,12 @@
                 <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143"/>
             </svg>
             <div class="form">
-                <label for="email">Email</label>
-                <input type="email" id="email">
-                <label for="password">Password</label>
-                <input type="password" id="password">
-                <input type="submit" id="submit" value="Submit">
-            </div>
+          <label for="email">Email</label>
+          <input type="email" id="email" v-model="email">
+          <label for="password">Password</label>
+          <input type="password" id="password" v-model="password">
+          <input type="submit" id="submit" value="Submit" @click="submitForm">
+        </div>
         </div>
     </div>
 </div>
@@ -46,6 +46,7 @@
 
 <script>
 import anime from 'animejs';
+import axios from 'axios';
 
 
 export default {
@@ -102,7 +103,35 @@ export default {
       }
     });
   });
-}
+},
+  //这边是chatgpt纯机器书写不含任何手工为您新加的submit呢，以及template中新增了用v-bind进行了数据绑定，其他就没动了
+data() {
+    return {
+      email: '',
+      password: ''
+    };
+  },
+
+  methods: {
+    submitForm() {
+      const formData = {
+        email: this.email,
+        password: this.password
+      };
+
+      axios.post('/api/login', formData)
+        .then(response => {
+          // 处理成功响应
+          console.log(response.data);
+          // 可以根据后端返回的数据进行进一步处理，比如跳转页面等
+        })
+        .catch(error => {
+          // 处理错误响应
+          console.error('Error:', error);
+          // 根据需要显示错误信息给用户
+        });
+    }
+  }
 }
 
 </script>
