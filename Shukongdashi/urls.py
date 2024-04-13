@@ -13,25 +13,29 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+# from django.conf.urls import url
 from Shukongdashi.demo import question_zhenduan
 from Shukongdashi.demo import question_baocun
 from Shukongdashi.demo import question_pa
 from Shukongdashi.demo import question_buquan
 from Shukongdashi.demo import question_wenda
+from users.views import database
 from . import view
 from django.views.generic import TemplateView
 from django.urls import path, include
-
+from django.urls import include, re_path
+from django.contrib import admin
 
 urlpatterns = [
     # url(r'^$', view.test),
-    url(r'^qa', question_zhenduan.question_answering),
-    url(r'^pa', question_pa.main),
-    url(r'^save', question_baocun.question_baocun),
-    url(r'^buquan', question_buquan.question_buquan),
-    url(r'^wenda', question_wenda.question_wenda),
-    url(r'^$', TemplateView.as_view(template_name="index.html")),
+    re_path(r'^qa', question_zhenduan.question_answering),
+    re_path(r'^pa', question_pa.main),
+    re_path(r'^save', question_baocun.question_baocun),
+    re_path(r'^buquan', question_buquan.question_buquan),
+    re_path(r'^wenda', question_wenda.question_wenda),
+    re_path(r'^$', TemplateView.as_view(template_name="index.html")),
+    re_path(r'^admin/', admin.site.urls),
+    path('data/', database),
     path('api/', include('users.urls')),
 ]
 

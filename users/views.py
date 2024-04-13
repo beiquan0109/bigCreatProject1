@@ -50,3 +50,11 @@ def user_register(request):
             return JsonResponse({'error': str(e)}, status=400)
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
+
+
+def database(request):
+    # 查询出对象信息，也就是数据表中的所有数据
+    # 一行数据就是一个对象，一个格子的数据就是一个对象的一个属性值
+    custom_users = CustomUser.objects.all()
+
+    return render(request, 'test.html', {'custom_users': custom_users})

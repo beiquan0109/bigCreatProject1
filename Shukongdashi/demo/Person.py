@@ -3,7 +3,8 @@ from __future__ import print_function
 
 
 import tensorflow as tf
-import tensorflow.contrib.keras as kr
+import tensorflow.keras as keras
+
 import os
 from Shukongdashi.test_my.test_cnnrnn.cnn_model import TCNNConfig, TextCNN
 from Shukongdashi.test_my.test_cnnrnn.data.cnews_loader import read_category, read_vocab
