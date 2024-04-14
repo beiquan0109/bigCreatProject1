@@ -8,31 +8,35 @@ from .models import CustomUser
 
 @csrf_exempt
 def user_login(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+    global input_email
+    if request.method == 'GET':
+        # 设置字符编码为 UTF-8
+        request.encoding = 'utf-8'
 
-        # 检查 email 和 password 是否有效
-        if not email or not password:
-            return JsonResponse({'error': 'Email and password are required.'}, status=400)
+        input_email = request.GET.get('email')
+        input_password = request.GET.get('password')
 
-        # 验证用户
-        user = authenticate(request, email=email, password=password)
-        if user is not None:
-            login(request, user)
-            return JsonResponse({'message': 'Login successful.'})
-        else:
-            return JsonResponse({'error': 'Invalid email or password.'}, status=401)
+    # # 使用 authenticate 函数来验证用户
+    # user = authenticate(request, email=email, password=password)
+
+    user = CustomUser.objects.get(email=input_email)
+    email = user.email
+    password = user.password
+
+    if email == input_email and password == input_password:
+        # 用户认证成功，可以进行其他操作，比如返回成功信息
+        return JsonResponse({'status': 'success', 'message': 'Authentication successful'})
     else:
-        return JsonResponse({'error': 'Method not allowed.'}, status=405)
+        # 用户认证失败，返回错误信息
+        return JsonResponse({'status': 'error', 'message': 'Authentication failed'}, {'custom_users': user})
 
 
 @csrf_exempt
 def user_register(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        password1 = request.POST.get('password1')
+    if request.method == 'GET':
+        email = request.GET.get('email')
+        password = request.GET.get('password')
+        password1 = request.GET.get('password1')
 
         # 检查 email 和 password 是否有效
         if not email or not password or not password1:

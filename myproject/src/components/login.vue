@@ -106,37 +106,48 @@ export default {
         }
       });
     });
+  },
+
+  data() {
+    return {
+      email: '',
+      password: ''
+    };
+  }
+  ,
+
+  methods: {
+    submitForm() {
+      // 构建查询字符串
+      const queryParams = new URLSearchParams({
+        email: this.email,
+        password: this.password
+      }).toString();
+
+      // 构建完整的 URL
+      const url = 'http://127.0.0.1:8000/api/login?' + queryParams;
+
+      // 发送 GET 请求
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // 处理成功响应
+          console.log(data);
+          // 可以根据后端返回的数据进行进一步处理，比如跳转页面等
+        })
+        .catch(error => {
+          // 处理错误响应
+          console.error('Error:', error);
+          // 根据需要显示错误信息给用户
+        });
+    }
   }
 }
-//这边是chatgpt纯机器书写不含任何手工为您新加的submit呢，以及template中新增了用v-bind进行了数据绑定，其他就没动了
-// data() {
-//     return {
-//       email: '',
-//       password: ''
-//     };
-//   },
-//
-//   methods: {
-//     submitForm() {
-//       const formData = {
-//         email: this.email,
-//         password: this.password
-//       };
-//
-//       axios.post('/api/login', formData)
-//         .then(response => {
-//           // 处理成功响应
-//           console.log(response.data);
-//           // 可以根据后端返回的数据进行进一步处理，比如跳转页面等
-//         })
-//         .catch(error => {
-//           // 处理错误响应
-//           console.error('Error:', error);
-//           // 根据需要显示错误信息给用户
-//         });
-//     }
-//   }
-// }
 
 </script>
 
