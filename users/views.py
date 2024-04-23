@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import CustomUser
+from django.core.serializers import serialize
+from .models import *
 
 
 @csrf_exempt
@@ -55,6 +56,11 @@ def user_register(request):
     else:
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
 
+
+
+def get_stkstatus(request):
+    data = serialize('json', stkStatus.objects.all(), fields=('createtime', 'x_current', 'y_current', 'z_current', 'x_speed', 'y_speed', 'z_speed', 'pos_x', 'pos_y', 'pos_z'))
+    return JsonResponse(data, safe=False)
 
 def database(request):
     # 查询出对象信息，也就是数据表中的所有数据

@@ -1,41 +1,40 @@
 <template>
-<div>
-  <h1>反馈保存</h1>
-        <form @submit.prevent="submitForm">
-            <div>
-                <label for="pinpai">品牌:</label>
-                <input type="text" id="pinpai" v-model="formData.pinpai" required>
-            </div>
-            <div>
-                <label for="xinghao">型号:</label>
-                <input type="text" id="xinghao" v-model="formData.xinghao" required>
-            </div>
-            <div>
-                <label for="errorid">报警信息:</label>
-                <input type="text" id="errorid" v-model="formData.errorid" required>
-            </div>
-            <div>
-                <label for="question">问题描述:</label>
-                <textarea id="question" v-model="formData.question" required></textarea>
-            </div>
-            <div>
-                <label for="selectedList">选中列表:</label>
-                <input type="text" id="selectedList" v-model="selectedList" required>
-            </div>
-            <div>
-                <label for="yuanyin">原因:</label>
-                <input type="text" id="yuanyin" v-model="formData.yuanyin" required>
-            </div>
-            <div>
-                <label for="answer">答案:</label>
-                <textarea id="answer" v-model="formData.answer" required></textarea>
-            </div>
-            <button type="submit">提交</button>
-        </form>
-        <p v-if="message">{{ message }}</p>
-
-    <router-link to="/pa">问题提问</router-link>
-    </div>
+  <div>
+    <h1>反馈保存</h1>
+    <form @submit.prevent="submitForm">
+      <div>
+        <label for="pinpai">品牌：</label>
+        <input type="text" id="pinpai" v-model="formData.pinpai" required>
+      </div>
+      <div>
+        <label for="xinghao">型号：</label>
+        <input type="text" id="xinghao" v-model="formData.xinghao" required>
+      </div>
+      <div>
+        <label for="errorid">报警信息：</label>
+        <input type="text" id="errorid" v-model="formData.errorid" required>
+      </div>
+      <div>
+        <label for="question">问题描述：</label>
+        <textarea id="question" v-model="formData.question" required></textarea>
+      </div>
+      <div>
+        <label for="selectedList">选中列表：</label>
+        <input type="text" id="selectedList" v-model="selectedList" required>
+      </div>
+      <div>
+        <label for="yuanyin">原因：</label>
+        <input type="text" id="yuanyin" v-model="formData.yuanyin" required>
+      </div>
+      <div>
+        <label for="answer">答案：</label>
+        <textarea id="answer" v-model="formData.answer" required></textarea>
+      </div>
+      <button type="submit">提交</button>
+    </form>
+    <p v-if="message">{{ message }}</p>
+    <router-link to="/pa" class="custom-link">问题提问</router-link>
+  </div>
 </template>
 
 <script>
@@ -88,3 +87,54 @@
             }
         };
     </script>
+
+<style scoped>
+h1 {
+  color: rgb(85, 130, 124);
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #4CAF50; /* Label color */
+}
+
+input[type="text"],
+textarea {
+  width: calc(100% / 5); /* Set input width to occupy one-fifth of page width */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.custom-link {
+  color: #007bff; /* 设置颜色为浅蓝色 */
+  text-decoration: none; /* 移除下划线 */
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3); /* 添加投影效果 */
+  padding: 5px 10px; /* 调整内边距以增加按钮大小 */
+}
+
+.custom-link:hover {
+  opacity: 0.8; /* 鼠标悬停时的透明度 */
+}
+</style>

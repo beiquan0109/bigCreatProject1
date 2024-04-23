@@ -5,6 +5,8 @@ import HelloWorld from '@/components/HelloWorld'
 import pa from "../components/pa.vue";
 import save from "../components/save.vue";
 import login from "../components/login.vue";
+import stkstatus from "../components/stkstatus.vue";
+
 Vue.use(Router)
 
 export default new Router({
@@ -32,6 +34,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/stkstatus',
+      name: 'stkstatus',
+      component: stkstatus
     }
   ]
 })

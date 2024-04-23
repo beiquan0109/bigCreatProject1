@@ -35,7 +35,6 @@ urlpatterns = [
     re_path(r'^wenda', question_wenda.question_wenda),
     re_path(r'^$', TemplateView.as_view(template_name="index.html")),
     re_path(r'^admin/', admin.site.urls),
-    path('data/', database),
     path('api/', include('users.urls')),
 ]
 

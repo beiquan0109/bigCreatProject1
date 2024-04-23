@@ -27,17 +27,30 @@
 
 
 
-    <h1>答案列表</h1>
-    <div v-for="(item, index) in answers" :key="index">
-      <p>{{ index + 1 }}. {{ item.answer }}</p>
-      <p>赞数: {{ item.zan }}</p>
+    <h1 v-if="answers.length > 0">答案列表</h1>
+    <div v-if="answers.length > 0" class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>答案</th>
+            <th>赞数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in answers" :key="index">
+            <!-- 序号列 -->
+            <td>{{ index + 1 }}</td>
+            <td>{{ item.answer }}</td>
+            <td>{{ item.zan }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div>
-    <router-link to="/save">保存反馈</router-link></div>
+      <router-link to="/save" class="custom-link">保存反馈</router-link>
+    </div>
   </div>
-
-
-
 </template>
 
 <script>
@@ -50,7 +63,8 @@ export default {
         errorid: '',
         question: '',
         relationListtmp: ''
-      }
+      },
+       answers: []
     };
   },
   methods: {
@@ -84,5 +98,79 @@ export default {
 </script>
 
 <style scoped>
-/* 在这里添加样式 */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+h1{
+  color: rgb(85,130,124);
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #4CAF50; /* Label color */
+}
+
+input[type="text"] {
+  width: calc(100% / 5); /* Set input width to occupy one-fifth of page width */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.table-container {
+  width: calc(100% / 2); /* 页面宽度的三分之一 */
+  margin: 0 auto; /* 居中 */
+  //display: none; /* 隐藏答案表格 */
+}
+
+.custom-link {
+  color: #007bff; /* 设置颜色为浅蓝色 */
+  text-decoration: none; /* 移除下划线 */
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3); /* 添加投影效果 */
+  padding: 5px 10px; /* 调整内边距以增加按钮大小 */
+}
+
+.custom-link:hover {
+  opacity: 0.8; /* 鼠标悬停时的透明度 */
+}
 </style>

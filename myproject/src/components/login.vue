@@ -124,8 +124,8 @@ export default {
         password: this.password
       }).toString();
 
-      // 构建完整的 URL
-      const url = 'http://127.0.0.1:8000/api/login?' + queryParams;
+      // 构建完整的 URLttp://127.0.0.1:8000/api/login
+      const url = 'h?' + queryParams;
 
       // 发送 GET 请求
       fetch(url)

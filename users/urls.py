@@ -7,6 +7,5 @@ from users.views import *
 urlpatterns = [
     path('login/', user_login),
     path('register/', user_register),
-    path('admin/', admin.site.urls),
-    path('data/', database)
+    path('stkstatus/', get_stkstatus),
 ]
