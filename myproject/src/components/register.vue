@@ -164,7 +164,7 @@ export default {
   font-family: 'Inter UI', sans-serif;
   margin: 0;
   padding: 20px;
-  width: 100%;
+  /*width: 100%;*/
   height: 100%;
 }
 

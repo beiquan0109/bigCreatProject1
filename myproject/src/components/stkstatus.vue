@@ -1,5 +1,12 @@
 <template>
+
+
   <div class="container">
+    <!--  title  -->
+    <div class="title">
+      <h1>堆垛机后台数据</h1>
+    </div>
+
     <!--  pos  -->
     <div class="chart-container">
       <div id="chart1"></div>
@@ -290,6 +297,7 @@ body {
 }
 
 
+
 #chart1, #chart2, #chart3, #chart4 {
   height: 500px;
   width: 95%;
@@ -305,6 +313,10 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 20px;
+}
+
+.title {
+  width: 100%;
 }
 
 .chart-container {
