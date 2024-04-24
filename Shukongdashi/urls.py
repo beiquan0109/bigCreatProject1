@@ -26,6 +26,8 @@ from django.urls import path, include
 from django.urls import include, re_path
 from django.contrib import admin
 
+from .view import get_home
+
 urlpatterns = [
     # url(r'^$', view.test),
     re_path(r'^qa', question_zhenduan.question_answering),
@@ -48,4 +50,3 @@ urlpatterns = [
 #     path('api/', include('backend.urls')),
 #     path(r'', TemplateView.as_view(template_name="index.html")),
 # ]
-

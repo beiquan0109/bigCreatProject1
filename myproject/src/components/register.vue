@@ -1,10 +1,10 @@
 <template xmlns:inkscape="">
-  <div>
+  <div class="body_container">
     <div class="page">
       <div class="container">
         <div class="left">
-          <div class="login">Login</div>
-          <div class="eula">By logging in you agree to the ridiculously long terms that you didn't bother to read
+          <div class="login">Register</div>
+          <div class="eula">请输入账号密码注册
           </div>
         </div>
         <div class="right">
@@ -49,6 +49,13 @@ import anime from "animejs";
 
 export default {
   name: "register",
+
+  data() {
+    return {
+      email: '',
+      password: ''
+    };
+  },
 
   mounted() {
     // 在 Vue 实例被挂载到页面上后执行
@@ -103,6 +110,33 @@ export default {
     });
   },
 
+  methods: {
+    submitForm() {
+      // 假设你的后端注册端点为 '/register'
+      // 构建查询字符串
+      const queryParams = new URLSearchParams({
+        email: this.email,
+        password: this.password
+      }).toString();
+
+      // 构建完整的 URL
+      const url = 'http://127.0.0.1:8000/api/register?' + queryParams;
+      fetch(url)
+        .then(response => {
+          // 如果需要，处理响应
+          console.log('注册请求已成功发送');
+          return response.json();
+        }).then(data => {
+        // Access the response data here
+        console.log(data);
+      })
+        .catch(error => {
+          console.error('注册时发生错误:', error);
+        });
+    }
+  },
+
+
 }
 </script>
 
@@ -125,7 +159,7 @@ export default {
   background: #2D2F36;
 }
 
-body {
+.body_container {
   background: white;
   font-family: 'Inter UI', sans-serif;
   margin: 0;

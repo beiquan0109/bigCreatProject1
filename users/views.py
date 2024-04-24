@@ -37,15 +37,10 @@ def user_register(request):
     if request.method == 'GET':
         email = request.GET.get('email')
         password = request.GET.get('password')
-        password1 = request.GET.get('password1')
 
         # 检查 email 和 password 是否有效
-        if not email or not password or not password1:
+        if not email or not password:
             return JsonResponse({'error': 'Email and both passwords are required.'}, status=400)
-
-        # 检查两次密码输入是否一致
-        if password != password1:
-            return JsonResponse({'error': 'Passwords do not match.'}, status=400)
 
         # 创建用户
         try:
@@ -57,10 +52,11 @@ def user_register(request):
         return JsonResponse({'error': 'Method not allowed.'}, status=405)
 
 
-
 def get_stkstatus(request):
-    data = serialize('json', stkStatus.objects.all(), fields=('createtime', 'x_current', 'y_current', 'z_current', 'x_speed', 'y_speed', 'z_speed', 'pos_x', 'pos_y', 'pos_z'))
+    data = serialize('json', stkStatus.objects.all(), fields=(
+    'createtime', 'x_current', 'y_current', 'z_current', 'x_speed', 'y_speed', 'z_speed', 'pos_x', 'pos_y', 'pos_z'))
     return JsonResponse(data, safe=False)
+
 
 def database(request):
     # 查询出对象信息，也就是数据表中的所有数据

@@ -1,10 +1,10 @@
 <template xmlns:inkscape="">
-  <div>
+  <div class="body_container">
     <div class="page">
       <div class="container">
         <div class="left">
           <div class="login">Login</div>
-          <div class="eula">By logging in you agree to the ridiculously long terms that you didn't bother to read
+          <div class="eula">请输入账号密码登录
           </div>
         </div>
         <div class="right">
@@ -113,8 +113,7 @@ export default {
       email: '',
       password: ''
     };
-  }
-  ,
+  },
 
   methods: {
     submitForm() {
@@ -124,8 +123,8 @@ export default {
         password: this.password
       }).toString();
 
-      // 构建完整的 URLttp://127.0.0.1:8000/api/login
-      const url = 'h?' + queryParams;
+      // 构建完整的 URL
+      const url = 'http://127.0.0.1:8000/api/login?' + queryParams;
 
       // 发送 GET 请求
       fetch(url)
@@ -171,7 +170,7 @@ export default {
   background: #2D2F36;
 }
 
-body {
+.body_container {
   background: white;
   font-family: 'Inter UI', sans-serif;
   margin: 0;
