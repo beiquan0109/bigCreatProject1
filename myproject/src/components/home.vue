@@ -10,8 +10,8 @@
       <div class="header__menu">
         <nav id="navbar" class="header__nav collapse">
           <ul class="header__elenco">
-            <li class="header__el"><a href="#" class="header__link">注册</a></li>
-            <li class="header__el header__el--blue"><a href="login.html" class="btn btn--white">登录 →</a></li>
+            <li class="header__el"><a href="/#/register" class="header__link">注册</a></li>
+            <li class="header__el header__el--blue"><a href="/#/login" class="btn btn--white">登录 →</a></li>
           </ul>
         </nav>
       </div>
@@ -26,8 +26,8 @@
             <h1 class="site__title">堆垛机故障预测系统</h1>
             <h2 class="site__subtitle">智能诊断</h2>
             <div class="site__box-link">
-              <a class="btn btn--width" href="">故障预测</a>
-              <a class="btn btn--revert btn--width" href="">后台管理</a>
+              <a class="btn btn--width" href="/#/pa">故障预测</a>
+              <a class="btn btn--revert btn--width" href="/#/stkstatus">后台管理</a>
             </div>
             <img class="site__img" src="https://image.ibb.co/c7grYb/image3015.png">
           </div>

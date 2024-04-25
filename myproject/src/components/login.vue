@@ -138,11 +138,14 @@ export default {
           // 处理成功响应
           console.log(data);
           // 可以根据后端返回的数据进行进一步处理，比如跳转页面等
+          alert('您已成功登录，准备跳转到后台页面！');
+          window.location.href = '/#/stkstatus'; // 跳转到后端页面
         })
         .catch(error => {
           // 处理错误响应
           console.error('Error:', error);
           // 根据需要显示错误信息给用户
+          alert('登录时发生错误:' + error);
         });
     }
   }
@@ -176,7 +179,7 @@ export default {
   margin: 0;
   padding: 20px;
   /*width: 100%;*/
-  height: 100%;
+  height: 699px;
 }
 
 .page {

@@ -119,6 +119,8 @@ export default {
         password: this.password
       }).toString();
 
+      console.log(queryParams);
+
       // 构建完整的 URL
       const url = 'http://127.0.0.1:8000/api/register?' + queryParams;
       fetch(url)
@@ -129,9 +131,13 @@ export default {
         }).then(data => {
         // Access the response data here
         console.log(data);
+        // 如果注册成功，跳转到登录页面
+        alert('您已成功注册，准备跳转到登录页面！');
+        window.location.href = '/#/login'; // 跳转到登录页面
       })
         .catch(error => {
           console.error('注册时发生错误:', error);
+          alert('注册时发生错误:' + error);
         });
     }
   },
@@ -165,7 +171,7 @@ export default {
   margin: 0;
   padding: 20px;
   /*width: 100%;*/
-  height: 100%;
+  height: 699px;
 }
 
 .page {

@@ -293,9 +293,8 @@ export default {
 
 <style scoped>
 body {
-  background: linear-gradient(to bottom, #003366, #66ccff); /* 从顶部到底部的渐变色 */
+  background: linear-gradient(cornflowerblue, pink);
 }
-
 
 
 #chart1, #chart2, #chart3, #chart4 {
@@ -306,6 +305,8 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  background-color: white;
 }
 
 .container {
@@ -317,6 +318,7 @@ body {
 
 .title {
   width: 100%;
+  text-align: center;
 }
 
 .chart-container {

@@ -8,5 +8,5 @@ urlpatterns = [
     path('login/', user_login),
     path('register/', user_register),
     path('stkstatus/', get_stkstatus),
-    path('home/', ),
+
 ]

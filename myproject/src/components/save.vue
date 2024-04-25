@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body_container">
     <h1>反馈保存</h1>
     <form @submit.prevent="submitForm">
       <div>
@@ -89,8 +89,14 @@
     </script>
 
 <style scoped>
+
+.body_container {
+  text-align: center;
+}
+
+
 h1 {
-  color: rgb(85, 130, 124);
+  color: black;
 }
 
 form {
@@ -101,7 +107,7 @@ label {
   display: block;
   margin-bottom: 8px;
   font-weight: 700;
-  color: #4CAF50; /* Label color */
+  color: lightblue; /* Label color */
 }
 
 input[type="text"],

@@ -44,7 +44,7 @@ def user_register(request):
 
         # 创建用户
         try:
-            CustomUser.objects.create_user(email=email, password=password)
+            CustomUser.objects.create(email=email, password=password)
             return JsonResponse({'message': 'User created successfully.'})
         except ValueError as e:
             return JsonResponse({'error': str(e)}, status=400)
@@ -54,7 +54,8 @@ def user_register(request):
 
 def get_stkstatus(request):
     data = serialize('json', stkStatus.objects.all(), fields=(
-    'createtime', 'x_current', 'y_current', 'z_current', 'x_speed', 'y_speed', 'z_speed', 'pos_x', 'pos_y', 'pos_z'))
+        'createtime', 'x_current', 'y_current', 'z_current', 'x_speed', 'y_speed', 'z_speed', 'pos_x', 'pos_y',
+        'pos_z'))
     return JsonResponse(data, safe=False)
 
 
